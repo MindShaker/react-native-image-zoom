@@ -437,10 +437,12 @@ export default class ImageViewer extends React.Component<Props, State> {
         // 如果是单个手指、距离上次按住大于预设秒、滑动距离小于预设值, 则可能是单击（如果后续双击间隔内没有开始手势）
         // const stayTime = new Date().getTime() - this.lastTouchStartTime!
         const moveDistance = Math.sqrt(gestureState.dx * gestureState.dx + gestureState.dy * gestureState.dy);
+        const cursorX = evt.nativeEvent.locationX;
+        const cursorY = evt.nativeEvent.locationY;
         if (evt.nativeEvent.changedTouches.length === 1 && moveDistance < (this.props.clickDistance || 0)) {
           this.singleClickTimeout = setTimeout(() => {
             if (this.props.onClick) {
-              this.props.onClick();
+              this.props.onClick(cursorX, cursorY ,this.scale);
             }
           }, this.props.doubleClickInterval);
         } else {

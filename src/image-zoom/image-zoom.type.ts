@@ -107,7 +107,7 @@ export class Props {
   /**
    * 单击的回调
    */
-  public onClick?: () => void = () => {
+  public onClick?: (x?: number, y?: number, scale?: number) => void = () => {
     //
   };
 
