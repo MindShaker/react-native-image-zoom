@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   Animated,
+  DeviceEventEmitter,
   LayoutChangeEvent,
   PanResponder,
   PanResponderInstance,
@@ -75,6 +76,9 @@ export default class ImageViewer extends React.Component<Props, State> {
   private isHorizontalWrap = false;
 
   public componentWillMount() {
+    DeviceEventEmitter.addListener('resetZoom', () => {
+      this.resetScale();
+    });
     this.imagePanResponder = PanResponder.create({
       // 要求成为响应者：
       onStartShouldSetPanResponder: () => true,

@@ -165,6 +165,9 @@ var ImageViewer = /** @class */ (function (_super) {
     }
     ImageViewer.prototype.componentWillMount = function () {
         var _this = this;
+        react_native_1.DeviceEventEmitter.addListener('resetZoom', function () {
+            _this.resetScale();
+        });
         this.imagePanResponder = react_native_1.PanResponder.create({
             // 要求成为响应者：
             onStartShouldSetPanResponder: function () { return true; },
