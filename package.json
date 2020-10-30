@@ -5,7 +5,7 @@
   "main": "built/index.js",
   "types": "built/index.d.ts",
   "scripts": {
-    "prepare": "rm -rf built && tsc",
+    "prepare": "rd /s built && tsc",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "prettier": "prettier --write src",
     "start": "tsc -w --outDir demo/built"
